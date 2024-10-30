@@ -1,56 +1,25 @@
-| Supported Targets | ESP32 | ESP32-C2 | ESP32-C3 | ESP32-C6 | ESP32-S2 | ESP32-S3 |
-| ----------------- | ----- | -------- | -------- | -------- | -------- | -------- |
+## แนวทางการทำงาน ESP32 project cook book
+1. ระบุตัวอย่างที่ใช้ ว่าเอามาจากตัวอย่างไหน
+   - เอามาจากตัวอย่าง softAp ของ wifi
+     ![image](https://github.com/user-attachments/assets/81fa0fe6-d12b-4061-bac3-22630071b2c5)
+2. ระบุว่า จะแก้ไขตรงไหนบ้าง เพื่ออะไร
+   - แก้ไขในส่วนของ config แล้วค้นหาตัว WiFi กดเลือกแก้ไขตามรูป
+     ![image](https://github.com/user-attachments/assets/dd4b4dbf-e0ec-4fdc-8d95-0d447db49dff)
+   - ทำการแก้ไขเรียบร้อยแล้วให้กด save เพื่อยืนยันในการสร้าง WiFi
+3. แสดงขั้นตอนการทำ project
+   - เลือก example กดค้นหา softAP ของ wifi
+   - ทำการเปลี่ยนwifiในเมนู config ตามข้อที่2
+   - อย่าลืมเลือก comportให้ถูกต้อง อย่างตัวอย่างนี้ใช้ com3
+   - ทำการ build หลังจากเรียบร้อยแล้วทำการ flash และ monitor
+   - เปิดดูWiFiในมือถือกดเลือก WiFiจะขึ้นมาใส่รหัสและทำการconnect
+   - เพียงเท่านี้ก็จะสามารถเชื่อมต่อกับWiFi ที่สร้างขึ้นมาบนตัว ESP32
+  4. แสดงผลการทำ project
+   - ผลลัพธ์หน้าจอบน vscode
+     ![image](https://github.com/user-attachments/assets/e5737d64-8519-4f8d-b7e0-677c8838e27b)
+   - ผลลัพธ์บนอุปกรณ์มือถือ
+     ![image](https://github.com/user-attachments/assets/5cc2a5a0-429c-4490-a9c3-b0283f8a5956)
 
-# Wi-Fi SoftAP Example
 
-(See the README.md file in the upper level 'examples' directory for more information about examples.)
-
-This example shows how to use the Wi-Fi SoftAP functionality of the Wi-Fi driver of ESP for serving as an Access Point.
-
-## How to use example
-
-SoftAP supports Protected Management Frames(PMF). Necessary configurations can be set using pmf flags. Please refer [Wifi-Security](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-guides/wifi-security.html) for more info.
-
-### Configure the project
-
-Open the project configuration menu (`idf.py menuconfig`).
-
-In the `Example Configuration` menu:
-
-* Set the Wi-Fi configuration.
-    * Set `WiFi SSID`.
-    * Set `WiFi Password`.
-
-Optional: If you need, change the other options according to your requirements.
-
-### Build and Flash
-
-Build the project and flash it to the board, then run the monitor tool to view the serial output:
-
-Run `idf.py -p PORT flash monitor` to build, flash and monitor the project.
-
-(To exit the serial monitor, type ``Ctrl-]``.)
-
-See the Getting Started Guide for all the steps to configure and use the ESP-IDF to build projects.
-
-* [ESP-IDF Getting Started Guide on ESP32](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/index.html)
-* [ESP-IDF Getting Started Guide on ESP32-S2](https://docs.espressif.com/projects/esp-idf/en/latest/esp32s2/get-started/index.html)
-* [ESP-IDF Getting Started Guide on ESP32-C3](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c3/get-started/index.html)
-
-## Example Output
-
-There is the console output for this example:
-
-```
-I (917) phy: phy_version: 3960, 5211945, Jul 18 2018, 10:40:07, 0, 0
-I (917) wifi: mode : softAP (30:ae:a4:80:45:69)
-I (917) wifi softAP: wifi_init_softap finished.SSID:myssid password:mypassword
-I (26457) wifi: n:1 0, o:1 0, ap:1 1, sta:255 255, prof:1
-I (26457) wifi: station: 70:ef:00:43:96:67 join, AID=1, bg, 20
-I (26467) wifi softAP: station:70:ef:00:43:96:67 join, AID=1
-I (27657) esp_netif_lwip: DHCP server assigned IP to a station, IP is: 192.168.4.2
-```
-
-## Troubleshooting
-
-For any technical queries, please open an [issue](https://github.com/espressif/esp-idf/issues) on GitHub. We will get back to you soon.
+5. สรุปผลการทำ project
+   - ใช้esp32ทำหน้าที่เป็น Access Point (AP) ให้กับอุปกรณ์อื่น ๆ โดยตรง เช่น สมาร์ทโฟน แล็ปท็อป
+   - ไปประยุกต์ใช้ในการควบคุมsmart homeควบคุมการเปิดปิดไฟ เครื่องใช้ไฟฟ้าในบ้าน ต่างๆ 
